@@ -12,4 +12,4 @@ import BareMetal.Utils
 
 main : IO ()
 main =
-    uartWrite "Hello, bare-metal Idris"
+    uartWrite "Hello, bare-metal Idris\n"
