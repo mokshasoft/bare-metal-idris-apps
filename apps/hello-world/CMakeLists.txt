@@ -8,15 +8,23 @@
 
 cmake_minimum_required(VERSION 3.7.2)
 
-project(hello-world C)
+set(name "hello-world")
 
-file(GLOB static
-    *.idr
-)
+set(supported_platforms ${pl_versatilepb})
 
-idris_app_link_modules(
-    hello-world
-    BareMetal.Utils
-)
+if (${PLATFORM} IN_LIST supported_platforms)
+    project(${name} C)
 
-idris_add_app(hello-world ${static})
+    file(GLOB static
+        *.idr
+    )
+
+    idris_app_link_modules(
+        ${name}
+        BareMetal.Utils
+    )
+
+    idris_add_app(${name} ${static})
+else()
+    message(STATUS "Project ${name} not supported for platform ${PLATFORM}")
+endif()
