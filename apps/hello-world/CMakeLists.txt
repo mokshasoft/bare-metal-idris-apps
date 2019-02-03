@@ -10,7 +10,10 @@ cmake_minimum_required(VERSION 3.7.2)
 
 set(name "hello-world")
 
-set(supported_platforms ${pl_versatilepb})
+set(supported_platforms
+    ${pl_versatilepb}
+    ${pl_beaglebone}
+)
 
 if (${PLATFORM} IN_LIST supported_platforms)
     project(${name} C)
