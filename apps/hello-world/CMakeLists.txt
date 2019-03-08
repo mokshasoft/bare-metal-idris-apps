@@ -24,7 +24,7 @@ if (${PLATFORM} IN_LIST supported_platforms)
 
     idris_app_link_modules(
         ${name}
-        BareMetal.Utils
+        drivers
     )
 
     idris_add_app(${name} ${static})
