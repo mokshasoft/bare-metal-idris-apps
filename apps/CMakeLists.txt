@@ -10,3 +10,4 @@ cmake_minimum_required(VERSION 3.7.2)
 
 add_subdirectory(hello-world)
 add_subdirectory(led-blink)
+add_subdirectory(cooperative-multitasking)
