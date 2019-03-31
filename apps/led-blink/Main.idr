@@ -12,7 +12,7 @@ import BareMetal.GPIO
 import BareMetal.Utils
 import BareMetal.SocAM335x
 
-gpioInstanceAddress : Int
+gpioInstanceAddress : Bits32
 gpioInstanceAddress = socGpio1Regs
 
 gpioInstancePinNumber : Int
