@@ -8,8 +8,10 @@ See "LICENSE_BSD2.txt" for details.
 
 module Main
 
-import BareMetal.Utils
+import StwfFFI.Utils
 
 main : IO ()
-main =
-    uartWrite "Hello, bare-metal Idris\n"
+main = do
+    consoleUtilsInit
+    consoleUtilsSetType 0
+    consoleUtilsPrintf "Setup UART logging\n"
