@@ -8,9 +8,9 @@ See "LICENSE_BSD2.txt" for details.
 
 module Main
 
-import BareMetal.GPIO
-import BareMetal.Utils
+import BareMetal.Utils as Bare
 import BareMetal.SocAM335x
+import StwfFFI.GPIO
 
 gpioInstanceAddress : Bits32
 gpioInstanceAddress = socGpio1Regs
@@ -21,7 +21,7 @@ gpioInstancePinNumber = 23
 setupGpio : IO ()
 setupGpio = do
     -- Enabling functional clocks for GPIO1 instance
-    gpioModuleClkConfig 1
+    gpio1ModuleClkConfig
 
     -- Selecting GPIO1[23] pin for use
     gpio1Pin23PinMuxSetup
@@ -36,7 +36,7 @@ setupGpio = do
     gpioDirModeSet
         gpioInstanceAddress
         gpioInstancePinNumber
-        True
+        0
 
 onOffTime : Int
 onOffTime = 50000000
@@ -49,7 +49,7 @@ blinkLed = do
         gpioInstancePinNumber
         True
 
-    busyWait onOffTime
+    Bare.busyWait onOffTime
 
     -- Driving a logic LOW on the GPIO pin
     gpioPinWrite
@@ -57,7 +57,7 @@ blinkLed = do
         gpioInstancePinNumber
         False
 
-    busyWait onOffTime
+    Bare.busyWait onOffTime
 
     -- Repeat blink
     blinkLed
